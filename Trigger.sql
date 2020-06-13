@@ -1,16 +1,7 @@
-
 CREATE TRIGGER ReciptContentCreate
-ON ReciptContent
-AFTER INSERT,DELETE
-AS
+   ON  ReciptContent
+   AFTER INSERT,DELETE,UPDATE
+AS 
 BEGIN
-    SET NOCOUNT ON;
-    UPDATE Recipts Set 
-
-	Recipts.TotalPrice=content.totalprice
-	FROM (
-		SELECT SUM(price) as totalprice,ReciptId
-		FROM ReciptContent) AS content
-	WHERE 
-		content.ReciptId = Recipts.Id
+    UPDATE Recipts SET TotalPrice=(SELECT SUM(price) FROM ReciptContent WHERE Recipts.Id=ReciptContent.ReciptId GROUP BY ReciptId)
 END
