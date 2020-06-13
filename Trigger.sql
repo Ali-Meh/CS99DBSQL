@@ -3,5 +3,5 @@ CREATE TRIGGER ReciptContentCreate
    AFTER INSERT,DELETE,UPDATE
 AS 
 BEGIN
-    UPDATE Recipts SET TotalPrice=(SELECT SUM(price) FROM ReciptContent WHERE Recipts.Id=ReciptContent.ReciptId GROUP BY ReciptId)
+    UPDATE Recipts SET TotalPrice=(SELECT SUM(price*Count) FROM ReciptContent WHERE Recipts.Id=ReciptContent.ReciptId GROUP BY ReciptId)
 END
