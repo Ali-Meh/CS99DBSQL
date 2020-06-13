@@ -67,7 +67,7 @@ INSERT INTO Costumers (FirstName,LastName,DeliveryAddress,UserName,Password,Cont
 VALUES ('UNKNOWN','UNKNOWN','DeliveryAddress','','','DeliveryAddress');
 
 --insert Coupons
-INSERT INTO Coupons (Code,Count,ExpireDate) VALUES ('Summer99Corona',99,'2020-09-30T00:00:00.000+04:30');
+INSERT INTO Coupons (Code,Count,Amount,ExpireDate) VALUES ('Summer99Corona',99,900000,'2020-09-30T00:00:00.000+04:30');
 
 --insert Stores
 INSERT INTO Stores (Name,Address,CityId) 
@@ -102,7 +102,7 @@ VALUES ('123456789987',3900000,4100000,20,'',1,1),
 INSERT INTO Recipts (TotalPrice,PayablePrice,Status,CouponId,CustomerId) 
 VALUES (4100000,3900000,1,null,1),
 (4100000,3900000,1,null,1),
-(4100000,3900000,1,null,1);
+(4100000,3900000,1,1,1);
 
 
 --insert ReciptContent

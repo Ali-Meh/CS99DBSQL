@@ -45,6 +45,7 @@ CREATE TABLE Costumers(
 CREATE TABLE Coupons(
 	 Id int IDENTITY(1,1) PRIMARY KEY,
 	 Code varchar(255),
+	 Amount money,
 	 Count int,
 	 ExpireDate datetimeoffset,
 );

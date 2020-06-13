@@ -1,7 +1,11 @@
-CREATE TRIGGER ReciptContentCreate
-   ON  ReciptContent
-   AFTER INSERT,DELETE,UPDATE
+CREATE TRIGGER PayablePriceTriggerCreate
+   ON  Recipts
+   AFTER UPDATE
 AS 
 BEGIN
-    UPDATE Recipts SET TotalPrice=(SELECT SUM(price*Count) FROM ReciptContent WHERE Recipts.Id=ReciptContent.ReciptId GROUP BY ReciptId)
+    UPDATE Recipts SET PayablePrice=(TotalPrice-(SELECT ISNULL((SELECT Amount FROM Coupons WHERE Coupons.Id=Recipts.CouponId), 0)))
 END
+
+
+
+
