@@ -1,5 +1,5 @@
 CREATE TRIGGER TotalPriceTriggerCreate
-   ON  ReciptContent
+   ON ReciptContent
    AFTER INSERT,DELETE,UPDATE
 AS 
 BEGIN

@@ -68,7 +68,6 @@ VALUES ('UNKNOWN','UNKNOWN','DeliveryAddress','','','DeliveryAddress');
 
 --insert Coupons
 INSERT INTO Coupons (Code,Count,Amount,ExpireDate) VALUES ('Summer99Corona',99,900000,'2020-09-30T00:00:00.000+04:30');
-
 --insert Stores
 INSERT INTO Stores (Name,Address,CityId) 
 VALUES ('branch #1','1st bulvare turn left',1);
