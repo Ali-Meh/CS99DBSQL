@@ -42,19 +42,19 @@ INSERT INTO Categories (Name,ParentId) VALUES ('fast food',1);--18
 INSERT INTO Categories (Name,ParentId) VALUES ('diary',3);
 
 --insert Products
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('samsung g3',3900000,4100000,2);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('Adata 32 GB usb 3.1',550000,700000,4);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('Silicon power 16 GB usb 3.0',200000,250000,4);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('pride 85',100000000,101000000,9);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('pegout 405',140000000,150000000,9);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('pegout 206',140000000,146000000,9);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('LG 42 LED',9000000,10000000,15);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('LG 52 LED',12000000,12600000,15);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('LG 36 LED',8500000,9000000,15);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('sumsung 42 LED',9000000,12600000,15);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('chesse',3999,4990,19);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('milk',4000,5000,19);
-INSERT INTO Products (Name,BuyPrice,SellPrice,CategoryId) VALUES ('butter',1500,2650,19);
+INSERT INTO Products (Name,CategoryId) VALUES ('samsung g3',2);
+INSERT INTO Products (Name,CategoryId) VALUES ('Adata 32 GB usb 3.1',4);
+INSERT INTO Products (Name,CategoryId) VALUES ('Silicon power 16 GB usb 3.0',4);
+INSERT INTO Products (Name,CategoryId) VALUES ('pride 85',9);
+INSERT INTO Products (Name,CategoryId) VALUES ('pegout 405',9);
+INSERT INTO Products (Name,CategoryId) VALUES ('pegout 206',9);
+INSERT INTO Products (Name,CategoryId) VALUES ('LG 42 LED',15);
+INSERT INTO Products (Name,CategoryId) VALUES ('LG 52 LED',15);
+INSERT INTO Products (Name,CategoryId) VALUES ('LG 36 LED',15);
+INSERT INTO Products (Name,CategoryId) VALUES ('sumsung 42 LED',15);
+INSERT INTO Products (Name,CategoryId) VALUES ('chesse',19);
+INSERT INTO Products (Name,CategoryId) VALUES ('milk',19);
+INSERT INTO Products (Name,CategoryId) VALUES ('butter',19);
 
 --insert Roles
 INSERT INTO Roles (Name,PermCode) VALUES ('store manager','MANAGER');

@@ -1,4 +1,4 @@
---create database [chainStoreDB];
+--create database [chainStoreDB];ALTER DATABASE [chainStoreDB] COLLATE Persian_100_CI_AI_KS_WS_SC
 use [chainStoreDB];
 CREATE TABLE Provinces(
 	 Id int IDENTITY(1,1) PRIMARY KEY,
@@ -22,8 +22,6 @@ CREATE TABLE Categories(
 CREATE TABLE Products(
 	 Id int IDENTITY(1,1) PRIMARY KEY,
 	 Name varchar(255),
-	 BuyPrice money,
-	 SellPrice money,
 	 CategoryId int FOREIGN KEY REFERENCES Categories(Id),
 );
 
@@ -63,7 +61,6 @@ CREATE TABLE Stores(
 	 Name varchar(255),
 	 Address varchar(255),
 	 CityId int FOREIGN KEY REFERENCES Cities(Id),
-	 --ManagerId int --FOREIGN KEY REFERENCES Staff(Id),
 )
 CREATE TABLE Staff(
 	 Id int IDENTITY(1,1) PRIMARY KEY,
@@ -104,6 +101,9 @@ CREATE TABLE ReciptContent(
 --------------INDEXES
 CREATE UNIQUE INDEX UserNameIndex
 ON Costumers (UserName); 
+
+CREATE UNIQUE INDEX UserNameIndex
+ON Staff (UserName); 
 
 CREATE UNIQUE INDEX CouponCodeIndex
 ON Coupons (Code); 
