@@ -42,19 +42,20 @@ INSERT INTO Categories (Name,ParentId) VALUES ('fast food',1);--18
 INSERT INTO Categories (Name,ParentId) VALUES ('diary',3);
 
 --insert Products
-INSERT INTO Products (Name,CategoryId) VALUES ('samsung g3',2);
-INSERT INTO Products (Name,CategoryId) VALUES ('Adata 32 GB usb 3.1',4);
-INSERT INTO Products (Name,CategoryId) VALUES ('Silicon power 16 GB usb 3.0',4);
-INSERT INTO Products (Name,CategoryId) VALUES ('pride 85',9);
-INSERT INTO Products (Name,CategoryId) VALUES ('pegout 405',9);
-INSERT INTO Products (Name,CategoryId) VALUES ('pegout 206',9);
-INSERT INTO Products (Name,CategoryId) VALUES ('LG 42 LED',15);
-INSERT INTO Products (Name,CategoryId) VALUES ('LG 52 LED',15);
-INSERT INTO Products (Name,CategoryId) VALUES ('LG 36 LED',15);
-INSERT INTO Products (Name,CategoryId) VALUES ('sumsung 42 LED',15);
-INSERT INTO Products (Name,CategoryId) VALUES ('chesse',19);
-INSERT INTO Products (Name,CategoryId) VALUES ('milk',19);
-INSERT INTO Products (Name,CategoryId) VALUES ('butter',19);
+INSERT INTO Products (Name,BarCode,BuyPrice,SellPrice,CategoryId) 
+VALUES ('samsung g3','123456789987',3900000,4100000,2),
+('Adata 32 GB usb 3.1','1234564548',550000,700000,4),
+('Silicon power 16 GB usb 3.0','23425235',550000,700000,4),
+('pride 85','3453426346',200000,250000,9),
+('pegout 405','23453426346',100000000,101000000,9),
+('pegout 206','234534253246',140000000,150000000,9),
+('LG 42 LED','32453453245',140000000,146000000,15),
+('LG 52 LED','768678678678',9000000,10000000,15),
+('LG 36 LED','2345345345',12000000,12600000,15),
+('sumsung 42 LED','874845121',12000000,12600000,15),
+('chesse','9632258721',3900,4000,19),
+('milk','13564649',2500,3000,19),
+('butter','35453324234',2700,3500,19);
 
 --insert Roles
 INSERT INTO Roles (Name,PermCode) VALUES ('store manager','MANAGER');
@@ -87,15 +88,16 @@ VALUES ('mohammad','agajani','agajani','123456','+98939***9999',3,2);
 
 
 --insert Store_Product
-INSERT INTO Store_Product (BarCode,BuyPrice,SellPrice,Count,ExpireDate,ProductId,StoreId) 
-VALUES ('123456789987',3900000,4100000,20,'',1,1),
-('1234564548',550000,700000,20,'',2,1),
-('3453426346',200000,250000,20,'',3,1),
-('23453426346',100000000,101000000,20,'',4,1),
-('234534253246',140000000,150000000,20,'',5,1),
-('32453453245',140000000,146000000,20,'',6,1),
-('768678678678',9000000,10000000,20,'',7,1),
-('2345345345',12000000,12600000,20,'',8,1);
+INSERT INTO Store_Product (Count,ExpireDate,ProductId,StoreId) 
+VALUES 
+(20,'2020-01-01',1,1),
+(20,'2022-01-01',2,1),
+(20,'2023-01-01',3,1),
+(20,'2020-12-11',4,1),
+(20,'2020-02-21',5,1),
+(20,'2020-03-01',6,1),
+(20,'2020-06-01',7,1),
+(20,'2021-11-01',8,1);
 
 --insert Recipts
 INSERT INTO Recipts (TotalPrice,PayablePrice,Status,CouponId,CustomerId) 
@@ -116,12 +118,6 @@ VALUES (4100000,20,1,1),
 (369000,2,2,3),
 (250000,20,2,4),
 (450000,3,2,5);
-
-
-
-
-
-
 
 
 

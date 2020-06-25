@@ -22,6 +22,9 @@ CREATE TABLE Categories(
 CREATE TABLE Products(
 	 Id int IDENTITY(1,1) PRIMARY KEY,
 	 Name varchar(255),
+	 BarCode nvarchar(255),
+	 BuyPrice money,
+	 SellPrice money,
 	 CategoryId int FOREIGN KEY REFERENCES Categories(Id),
 );
 
@@ -75,9 +78,6 @@ CREATE TABLE Staff(
 
 CREATE TABLE Store_Product(
 	 Id int IDENTITY(1,1) PRIMARY KEY,
-	 BarCode nvarchar(255),
-	 BuyPrice money,
-	 SellPrice money,
 	 Count int,
 	 ExpireDate datetimeoffset,
 	 PurchaseDate datetimeoffset DEFAULT GETDATE(),
@@ -109,6 +109,6 @@ CREATE UNIQUE INDEX CouponCodeIndex
 ON Coupons (Code); 
 
 CREATE UNIQUE INDEX BarCodeIndex
-ON Store_Product(BarCode); 
+ON Products(BarCode); 
 
 --triggers

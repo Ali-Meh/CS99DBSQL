@@ -24,7 +24,9 @@ declare @product_barcode varchar(50) ='23453426346';
 declare @NewlyCreatedReciptId int;
 
 --search by product barcode
-select * from Store_Product where BarCode = @product_barcode;
+select * from Products 
+join Store_Product on ProductId=Store_Product.ProductId
+where BarCode = @product_barcode order by Store_Product.ExpireDate;
 
 --create recipt for costumer
 INSERT INTO Recipts (TotalPrice,PayablePrice,Status,CouponId,CustomerId)
@@ -35,7 +37,7 @@ VALUES (0,0,1,null,1);
 
 --add products to recipt by product barcode
 INSERT INTO ReciptContent (Price,Count,ReciptId,StoreProductId)
-select SellPrice,5,IDENT_CURRENT('Recipts'),Id from Store_Product where BarCode =@product_barcode ;
+select SellPrice,5,IDENT_CURRENT('Recipts'),Id from Products where BarCode =@product_barcode ;
 
 --Select all Products in Recipt
 Select * from ReciptContent
