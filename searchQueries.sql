@@ -37,7 +37,9 @@ VALUES (0,0,1,null,1);
 
 --add products to recipt by product barcode
 INSERT INTO ReciptContent (Price,Count,ReciptId,StoreProductId)
-select SellPrice,5,IDENT_CURRENT('Recipts'),Id from Products where BarCode =@product_barcode ;
+select SellPrice,5,IDENT_CURRENT('Recipts'),Store_Product.Id from Store_Product 
+join Products on products.Id=Store_Product.ProductId 
+where BarCode =@product_barcode ;
 
 --Select all Products in Recipt
 Select * from ReciptContent
@@ -49,7 +51,7 @@ where ReciptId=IDENT_CURRENT('Recipts');
 declare @CouponCode varchar(50) ='Summer99Corona';
 select * from Recipts where Id=IDENT_CURRENT('Recipts');
 BEGIN TRANSACTION;  
-	update Recipts set CouponId=(SELECT Id FROM Coupons WHERE Coupons.Code=@CouponCode and Coupons.Count>0)
+	update Recipts set CouponId=(SELECT Id FROM Coupons WHERE Coupons.Code=@CouponCode and Coupons.Count>0) where Id=IDENT_CURRENT('Recipts')
 	update Coupons set Count=Count-1 where Id=(SELECT Id FROM Coupons WHERE Coupons.Code=@CouponCode)
 COMMIT; 
 select * from Recipts where Id=IDENT_CURRENT('Recipts');
