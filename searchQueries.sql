@@ -119,7 +119,7 @@ where PurchaseDate between '2020-06-23' and '2020-06-25';
 --------------------------------------------------------
 Select sum(ReciptContent.Count*ReciptContent.Price),ReciptContent.StoreProductId from Store_Product 
 join ReciptContent on Store_Product.Id=ReciptContent.StoreProductId
-where PurchaseDate between '2020-06-23' and '2020-06-25'
+--where PurchaseDate between '2020-06-23' and '2020-06-25'
 group by ReciptContent.StoreProductId;--select product buy price and reduct from some
 -------------------------------------------------------
 Select sum(ReciptContent.Count*ReciptContent.Price)as totalsell,
@@ -127,12 +127,23 @@ sum(ReciptContent.Count*Store_Product.BuyPrice)as totalExpence,
 ReciptContent.StoreProductId
 from Store_Product 
 join ReciptContent on Store_Product.Id=ReciptContent.StoreProductId
-where PurchaseDate between '2020-06-23' and '2020-06-25'
+--where PurchaseDate between '2020-06-23' and '2020-06-25'
 group by ReciptContent.StoreProductId;-- add product name and group by that
+----------------------------------------------------------------------------
 
-
-
---report
+--report revenue
+SELECT data.StoreProductId, data.PurchaseDate,data.totalsell,data.totalExpence,data.totalsell - data.totalExpence as Profit
+FROM (
+	Select sum(ReciptContent.Count*ReciptContent.Price)as totalsell,
+	sum(ReciptContent.Count*Store_Product.BuyPrice)as totalExpence,
+	ReciptContent.StoreProductId,
+	Recipts.PurchaseDate
+	from Store_Product 
+	join ReciptContent on Store_Product.Id=ReciptContent.StoreProductId
+	join Recipts on ReciptContent.ReciptId=ReciptContent.Id
+	--where Recipts.PurchaseDate between '2020-06-25' and '2020-06-26'
+	group by Recipts.PurchaseDate,ReciptContent.StoreProductId
+) as data
 
 
 
