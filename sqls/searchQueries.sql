@@ -122,19 +122,24 @@ join ReciptContent on Store_Product.Id=ReciptContent.StoreProductId
 --where PurchaseDate between '2020-06-23' and '2020-06-25'
 group by ReciptContent.StoreProductId;--select product buy price and reduct from some
 -------------------------------------------------------
-Select sum(ReciptContent.Count*ReciptContent.Price)as totalsell,
-sum(ReciptContent.Count*Store_Product.BuyPrice)as totalExpence,
-ReciptContent.StoreProductId
-from Store_Product 
-join ReciptContent on Store_Product.Id=ReciptContent.StoreProductId
---where PurchaseDate between '2020-06-23' and '2020-06-25'
-group by ReciptContent.StoreProductId;-- add product name and group by that
+SELECT data.StoreProductId, data.Name,data.totalSell,data.totalExpence,data.totalSell - data.totalExpence as Profit
+FROM (
+	Select sum(ReciptContent.Count*ReciptContent.Price)as totalSell,
+	sum(ReciptContent.Count*Store_Product.BuyPrice)as totalExpence,
+	ReciptContent.StoreProductId,
+	Products.Name
+	from Store_Product 
+	join Products on ProductId=Products.Id
+	join ReciptContent on Store_Product.Id=ReciptContent.StoreProductId
+	--where PurchaseDate between '2020-06-23' and '2020-06-25'
+	group by ReciptContent.StoreProductId,Products.Name
+) as data-- add product name and group by that
 ----------------------------------------------------------------------------
 
 --report revenue
-SELECT data.StoreProductId, data.PurchaseDate,data.totalsell,data.totalExpence,data.totalsell - data.totalExpence as Profit
+SELECT data.StoreProductId, data.PurchaseDate,data.totalSell,data.totalExpence,data.totalSell - data.totalExpence as Profit
 FROM (
-	Select sum(ReciptContent.Count*ReciptContent.Price)as totalsell,
+	Select sum(ReciptContent.Count*ReciptContent.Price)as totalSell,
 	sum(ReciptContent.Count*Store_Product.BuyPrice)as totalExpence,
 	ReciptContent.StoreProductId,
 	Recipts.PurchaseDate
@@ -144,7 +149,6 @@ FROM (
 	--where Recipts.PurchaseDate between '2020-06-25' and '2020-06-26'
 	group by Recipts.PurchaseDate,ReciptContent.StoreProductId
 ) as data
-
 
 
 /*
